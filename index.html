@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Claim Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .form-section {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Student Claim Form</h1>
+  <div class="form-section">
+    <label>Surname:</label>
+    <input type="text" name="surname" />
+
+    <label>Initials:</label>
+    <input type="text" name="initials" />
+
+    <label>Department:</label>
+    <input type="text" name="department" />
+
+    <label>Personnel No:</label>
+    <input type="text" name="personnel_no" />
+
+    <label>Designation:</label>
+    <input type="text" name="designation" />
+
+    <label>Status:</label>
+    <select name="status">
+      <option value="part-time">Part-Time</option>
+      <option value="full-time">Full-Time</option>
+    </select>
+
+    <label>Highest Academic Qualification (M+5):</label>
+    <input type="text" name="qualification" />
+
+    <label>Prior Authorization Given By:</label>
+    <input type="text" name="authorized_by" />
+
+    <label>Period Claim Start Date:</label>
+    <input type="date" name="start_date" />
+
+    <label>End Date:</label>
+    <input type="date" name="end_date" />
+
+    <label>GLA Allocation:</label>
+    <input type="text" name="gla_allocation" />
+
+    <label>Cost Centre:</label>
+    <input type="text" name="cost_centre" />
+
+    <label>Account:</label>
+    <input type="text" name="account" />
+
+    <h3>Details of Work Done</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th><th>Details of Work</th><th>Time From</th><th>Time To</th><th>Total (Min/Hrs)</th><th>No. of Students</th><th>Session</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><input type="date" /></td><td><input type="text" /></td><td><input type="time" /></td><td><input type="time" /></td><td><input type="text" /></td><td><input type="number" /></td><td><input type="text" /></td></tr>
+        <tr><td><input type="date" /></td><td><input type="text" /></td><td><input type="time" /></td><td><input type="time" /></td><td><input type="text" /></td><td><input type="number" /></td><td><input type="text" /></td></tr>
+        <tr><td><input type="date" /></td><td><input type="text" /></td><td><input type="time" /></td><td><input type="time" /></td><td><input type="text" /></td><td><input type="number" /></td><td><input type="text" /></td></tr>
+        <tr><td colspan="4">Total Hrs = <input type="text" /></td><td colspan="3"></td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>THE OFFICIAL TIME-TABLE AND REGISTER MUST ACCOMPANY THIS CLAIM!</strong></p>
+    <p>DECLARATION BY CLAIMANT: I hereby declare that I have worked as indicated above and/or as evidenced by the attached attendance register.</p>
+
+    <label>Signature of Claimant:</label>
+    <canvas id="signature" width="300" height="150"></canvas><br/>
+    <button onclick="clearSignature()">Clear Signature</button>
+
+    <label>Date:</label>
+    <input type="date" name="claimant_date" />
+  </div>
+
+  <div class="form-section">
+    <h3>TO BE COMPLETED BY HEAD OF DEPARTMENT OR SUPERVISOR</h3>
+    <label>Total Extra Hrs Claimed:</label>
+    <input type="text" />
+
+    <label>X Rate (R/H):</label>
+    <input type="text" />
+
+    <label>Total Claimed (R):</label>
+    <input type="text" />
+
+    <p>As HOD/Supervisor I certify that I have checked that the claimant did work as indicated above, and funds are available.</p>
+
+    <h4>Normal Workload of Claimant</h4>
+    <table>
+      <thead>
+        <tr><th>Subject</th><th>Credit</th><th>No. of Students</th><th>Total FTEs</th><th>No. of Periods/Week</th><th>Hours/Week</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="number" /></td><td><input type="text" /></td><td><input type="number" /></td><td><input type="number" /></td></tr>
+      </tbody>
+    </table>
+
+    <label>Checked and Approved by Head of Department:</label>
+    <input type="text" />
+    <label>Date:</label>
+    <input type="date" />
+
+    <label>Checked and Approved by Dean/Director:</label>
+    <input type="text" />
+    <label>Date:</label>
+    <input type="date" />
+
+    <p>Total Extra Hours Approved <input type="text" /> X Approved Rate <input type="text" /> = TOTAL</p>
+
+    <label>Checked and Approved by Director – Human Resources:</label>
+    <input type="text" />
+    <label>Date:</label>
+    <input type="date" />
+
+    <label>Checked and Approved by Relevant Vice Principal:</label>
+    <input type="text" />
+    <label>Date:</label>
+    <input type="date" />
+  </div>
+
+  <div class="form-section">
+    <h3>FOR FINANCE ONLY</h3>
+    <label>Earning Code:</label>
+    <input type="text" />
+
+    <label>Pay Cycle:</label>
+    <input type="text" />
+
+    <label>Signature:</label>
+    <input type="text" />
+
+    <label>Date:</label>
+    <input type="date" />
+  </div>
+
+  <button onclick="submitForm()">Submit Form</button>
+
+  <script>
+    const canvas = document.getElementById("signature");
+    const ctx = canvas.getContext("2d");
+    let drawing = false;
+
+    canvas.addEventListener("mousedown", () => drawing = true);
+    canvas.addEventListener("mouseup", () => drawing = false);
+    canvas.addEventListener("mousemove", draw);
+
+    function draw(e) {
+      if (!drawing) return;
+      ctx.lineWidth = 2;
+      ctx.lineCap = "round";
+      ctx.strokeStyle = "#000";
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    function clearSignature() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+    }
+
+    function submitForm() {
+      alert("Form submitted (stub). Backend not yet connected.");
+    }
+  </script>
+</body>
+</html>
